@@ -1,73 +1,96 @@
-/* General styles */
+/* General Styles */
 body {
     font-family: Arial, sans-serif;
+    background-color: #f1f1f1;
     margin: 0;
     padding: 0;
-    background: linear-gradient(to right, #56ccf2, #2f80ed); /* Gradient background */
-    color: white;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
+}
+
+/* Container */
+.container {
+    background: linear-gradient(135deg, #6b9ac4, #5f2c82);
+    padding: 40px;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 500px;
     text-align: center;
 }
 
-/* App container */
-#app {
-    background-color: rgba(255, 255, 255, 0.1); /* Semi-transparent background */
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-    max-width: 400px;
-    width: 100%;
-    margin: auto;
-}
-
-/* Heading (Logo text) */
-h1 {
-    font-size: 36px;
-    margin-bottom: 20px;
-    font-weight: bold;
-    text-transform: uppercase;
-    color: #ffcc00; /* Golden color */
-}
-
-/* Input field and button */
-input[type="text"] {
-    padding: 10px;
-    width: 80%;
-    margin: 10px;
-    border-radius: 5px;
-    border: none;
-    font-size: 16px;
-    outline: none;
-}
-
-button {
-    padding: 12px 20px;
-    background-color: #ff5733; /* Bright color */
-    border: none;
-    border-radius: 5px;
+/* Header */
+header {
     color: white;
-    font-size: 18px;
+    margin-bottom: 30px;
+}
+
+header h1 {
+    font-size: 2.5em;
+    font-weight: bold;
+}
+
+.logo {
+    width: 100px;
+    height: auto;
+    margin-top: 10px;
+}
+
+/* Weather Form */
+.weather-form {
+    margin-bottom: 30px;
+}
+
+.weather-input {
+    padding: 12px;
+    font-size: 1.2em;
+    width: 80%;
+    margin-right: 10px;
+    border-radius: 5px;
+    border: 2px solid #fff;
+}
+
+.weather-btn {
+    padding: 12px 20px;
+    font-size: 1.2em;
+    background-color: #ffab00;
+    border: none;
+    border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    color: white;
 }
 
-button:hover {
-    background-color: #ff774d; /* Hover effect */
+.weather-btn:hover {
+    background-color: #e69800;
 }
 
-/* Weather results styling */
-#weatherResult {
+/* Weather Display */
+.weather-display {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
     margin-top: 20px;
-    font-size: 18px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    color: #333;
 }
 
-#weatherResult h2 {
-    color: #ffcc00;
+.weather-display h2 {
+    font-size: 1.8em;
+    margin-bottom: 10px;
 }
 
-#weatherResult p {
-    margin: 5px 0;
+.weather-display p {
+    font-size: 1.2em;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+    header h1 {
+        font-size: 2em;
+    }
+    .weather-input, .weather-btn {
+        width: 100%;
+        margin-bottom: 10px;
+    }
 }

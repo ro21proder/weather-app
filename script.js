@@ -1,33 +1,33 @@
-const API_KEY = "ded852add39552c66667a956aa3135da"; // Your actual WeatherStack API key
-const BASE_URL = "https://api.weatherstack.com/current";
-
-document.getElementById("getWeatherButton").addEventListener("click", async () => {
+document.getElementById("getWeatherBtn").addEventListener("click", async function() {
     const city = document.getElementById("cityInput").value;
     if (!city) {
-        alert("Please enter a city name!");
+        alert("Please enter a city name.");
         return;
     }
 
-    try {
-        const response = await fetch(`${BASE_URL}?access_key=${API_KEY}&query=${city}`);
-        const data = await response.json();
+    const apiKey = 'ded852add39552c66667a956aa3135da';  // Replace with your API key
+    const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
 
-        if (data.error) {
-            document.getElementById("weatherResult").innerHTML = `
-                <p>Error: ${data.error.info}</p>
-            `;
-        } else {
-            document.getElementById("weatherResult").innerHTML = `
-                <h2>${data.location.name}, ${data.location.country}</h2>
-                <p>Temperature: ${data.current.temperature}°C</p>
-                <p>Weather: ${data.current.weather_descriptions[0]}</p>
-                <p>Humidity: ${data.current.humidity}%</p>
-                <p>Wind Speed: ${data.current.wind_speed} km/h</p>
-            `;
+    try {
+        const response = await fetch(url);
+        const data = await response.json();
+        if (data.cod === "404") {
+            alert("City not found.");
+            return;
         }
+        displayWeather(data);
     } catch (error) {
-        document.getElementById("weatherResult").innerHTML = `
-            <p>Unable to fetch weather data. Please try again later.</p>
-        `;
+        alert("Error fetching weather data.");
     }
 });
+
+function displayWeather(data) {
+    const weatherDisplay = document.getElementById("weatherDisplay");
+    weatherDisplay.innerHTML = `
+        <h2>Weather in ${data.name}</h2>
+        <p><strong>Temperature:</strong> ${data.main.temp}°C</p>
+        <p><strong>Weather:</strong> ${data.weather[0].description}</p>
+        <p><strong>Humidity:</strong> ${data.main.humidity}%</p>
+        <p><strong>Wind Speed:</strong> ${data.wind.speed} m/s</p>
+    `;
+}
