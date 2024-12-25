@@ -8,11 +8,14 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
+    background-image: url('image.jpg'); /* Add your image here */
+    background-size: cover; /* Makes the image cover the whole background */
+    background-position: center; /* Centers the background image */
 }
 
 /* Container */
 .container {
-    background: linear-gradient(135deg, #6b9ac4, #5f2c82);
+    background: rgba(0, 0, 0, 0.5); /* Transparent background to make text more readable */
     padding: 40px;
     border-radius: 10px;
     width: 90%;

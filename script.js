@@ -6,20 +6,18 @@ document.getElementById("getWeatherBtn").addEventListener("click", async functio
     }
 
     const apiKey = 'ded852add39552c66667a956aa3135da';  // Replace with your actual API key
-    const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
-
-    // Show loading indicator
-    document.getElementById("weatherDisplay").innerHTML = "<p>Loading...</p>";
+    const url = `https://api.weatherstack.com/current?access_key=${apiKey}&query=${city}`;
 
     try {
         const response = await fetch(url);
         const data = await response.json();
-        if (data.cod === "404") {
+        if (data.success === false) {
             alert("City not found.");
             return;
         }
         displayWeather(data);
     } catch (error) {
+        console.error("Error fetching weather data:", error);
         alert("Error fetching weather data.");
     }
 });
@@ -27,10 +25,10 @@ document.getElementById("getWeatherBtn").addEventListener("click", async functio
 function displayWeather(data) {
     const weatherDisplay = document.getElementById("weatherDisplay");
     weatherDisplay.innerHTML = `
-        <h2>Weather in ${data.name}</h2>
-        <p><strong>Temperature:</strong> ${data.main.temp}°C</p>
-        <p><strong>Weather:</strong> ${data.weather[0].description}</p>
-        <p><strong>Humidity:</strong> ${data.main.humidity}%</p>
-        <p><strong>Wind Speed:</strong> ${data.wind.speed} m/s</p>
+        <h2>Weather in ${data.location.name}, ${data.location.country}</h2>
+        <p><strong>Temperature:</strong> ${data.current.temperature}°C</p>
+        <p><strong>Weather:</strong> ${data.current.weather_descriptions[0]}</p>
+        <p><strong>Humidity:</strong> ${data.current.humidity}%</p>
+        <p><strong>Wind Speed:</strong> ${data.current.wind_speed} km/h</p>
     `;
 }
