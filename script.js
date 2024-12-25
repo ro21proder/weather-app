@@ -5,8 +5,11 @@ document.getElementById("getWeatherBtn").addEventListener("click", async functio
         return;
     }
 
-    const apiKey = 'ded852add39552c66667a956aa3135da';  // Replace with your API key
+    const apiKey = 'ded852add39552c66667a956aa3135da';  // Replace with your actual API key
     const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+
+    // Show loading indicator
+    document.getElementById("weatherDisplay").innerHTML = "<p>Loading...</p>";
 
     try {
         const response = await fetch(url);
