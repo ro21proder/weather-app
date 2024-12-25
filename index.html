@@ -3,35 +3,39 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Vibrant Weather Haven</title>
+  <title>Weather Dashboard</title>
   <link rel="stylesheet" href="styles.css">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 </head>
 <body>
-  <!-- Hero Section -->
-  <div class="hero">
-    <div class="hero-content">
-      <h1>🌈 Vibrant Weather Haven</h1>
-      <p>Discover the weather in the most colorful way!</p>
+  <div class="container">
+    <header>
+      <h1>🌦 Weather Dashboard</h1>
+      <p>Stay updated with real-time weather conditions!</p>
+    </header>
 
-      <!-- Search Bar -->
-      <div class="search-bar">
-        <input id="cityInput" class="search-input" type="text" placeholder="Enter a city name">
-        <button id="getWeatherBtn" class="search-button"><i class="fas fa-search"></i> Explore</button>
+    <div class="hero-section">
+      <div class="hero-text">
+        <h2>Find Your City’s Weather</h2>
+        <p>Enter the city name and get the latest weather updates in seconds.</p>
+        <div class="weather-form">
+          <input id="cityInput" type="text" class="weather-input" placeholder="Enter city name...">
+          <button id="getWeatherBtn" class="weather-btn">Get Weather</button>
+        </div>
+      </div>
+      <div class="hero-image">
+        <img src="https://via.placeholder.com/300x200" alt="Weather" />
       </div>
     </div>
-  </div>
 
-  <!-- Weather Display Section -->
-  <div id="weatherDisplay" class="weather-display hidden">
-    <h2>🌤️ Weather Details</h2>
-    <div id="weatherDetails"></div>
-  </div>
+    <section id="weatherDisplay" class="weather-display">
+      <!-- Weather data will be dynamically inserted here -->
+    </section>
 
-  <!-- Footer -->
-  <footer>
-    <p>🌟 &copy; 2024 Vibrant Weather Haven | Powered by <a href="https://weatherstack.com/" target="_blank">WeatherStack API</a></p>
-  </footer>
+    <footer>
+      <p>&copy; 2024 WeatherApp Inc. | Powered by <a href="https://weatherstack.com/" target="_blank">WeatherStack API</a></p>
+    </footer>
+  </div>
 
   <script src="script.js"></script>
 </body>

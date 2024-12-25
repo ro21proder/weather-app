@@ -1,5 +1,5 @@
 document.getElementById("getWeatherBtn").addEventListener("click", async function () {
-    const city = document.getElementById("cityInput").value.trim();
+    const city = document.getElementById("cityInput").value;
     if (!city) {
         alert("Please enter a city name.");
         return;
@@ -11,12 +11,10 @@ document.getElementById("getWeatherBtn").addEventListener("click", async functio
     try {
         const response = await fetch(url);
         const data = await response.json();
-
-        if (!data.current) {
-            alert("City not found or API error.");
+        if (data.success === false) {
+            alert("City not found.");
             return;
         }
-
         displayWeather(data);
     } catch (error) {
         console.error("Error fetching weather data:", error);
@@ -26,10 +24,11 @@ document.getElementById("getWeatherBtn").addEventListener("click", async functio
 
 function displayWeather(data) {
     const weatherDisplay = document.getElementById("weatherDisplay");
+    weatherDisplay.style.display = "block";
     weatherDisplay.innerHTML = `
-        <h2><i class="fas fa-map-marker-alt"></i> ${data.location.name}, ${data.location.country}</h2>
+        <h2>Weather in ${data.location.name}, ${data.location.country}</h2>
         <p><strong>Temperature:</strong> ${data.current.temperature}°C</p>
-        <p><strong>Condition:</strong> ${data.current.weather_descriptions[0]}</p>
+        <p><strong>Weather:</strong> ${data.current.weather_descriptions[0]}</p>
         <p><strong>Humidity:</strong> ${data.current.humidity}%</p>
         <p><strong>Wind Speed:</strong> ${data.current.wind_speed} km/h</p>
     `;
